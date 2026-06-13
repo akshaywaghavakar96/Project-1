@@ -8,7 +8,7 @@ st.set_page_config(
 )
 @st.cache_data
 def load_data():
-    return pd.read_csv("data/transactions.csv")
+    return pd.read_csv("transactions.csv")
 
 df = load_data()
 st.title("🏦 NPCI Transaction Monitoring Dashboard")
