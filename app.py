@@ -57,3 +57,20 @@ if total_txns > 0:
 else:
     success_rate = 0
     failed_rate = 0
+    
+col1,col2,col3,col4 = st.columns(4)
+
+col1.metric(
+    "Total Transactions",
+    f"{total_txns:,}"
+)
+
+col2.metric(
+    "Transaction Amount",
+    f"₹{total_amount:,.0f}"
+)
+
+col3.metric(
+    "Success %",
+    f"{success_rate}%"
+)
