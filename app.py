@@ -74,3 +74,25 @@ col3.metric(
     "Success %",
     f"{success_rate}%"
 )
+
+
+
+
+daily = (
+    filtered_df
+    .groupby("txn_date")
+    .size()
+    .reset_index(name="count")
+)
+
+fig = px.line(
+    daily,
+    x="txn_date",
+    y="count",
+    title="Daily Transaction Trend"
+)
+
+st.plotly_chart(
+    fig,
+    use_container_width=True
+)
