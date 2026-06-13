@@ -98,7 +98,7 @@ st.plotly_chart(
 )
 
 
-col1= st.columns(1)
+col1,col2 = st.columns(2)
 
 bank_data = (
     filtered_df
@@ -116,5 +116,23 @@ fig1 = px.bar(
 
 col1.plotly_chart(
     fig1,
+    use_container_width=True
+)
+
+status_data = (
+    filtered_df["status"]
+    .value_counts()
+    .reset_index()
+)
+
+fig2 = px.pie(
+    status_data,
+    names="status",
+    values="count",
+    title="Transaction Status"
+)
+
+col2.plotly_chart(
+    fig2,
     use_container_width=True
 )
