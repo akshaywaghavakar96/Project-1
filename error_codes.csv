@@ -1,0 +1,6 @@
+error_code,error_description
+UPI001,Insufficient Balance
+UPI002,Beneficiary Bank Timeout
+UPI003,Network Failure
+UPI004,Invalid VPA
+UPI005,Daily Limit Exceeded

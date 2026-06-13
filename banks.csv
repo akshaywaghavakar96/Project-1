@@ -1,0 +1,11 @@
+bank_id,bank_name,state,bank_type
+B001,SBI,Maharashtra,Public
+B002,HDFC,Maharashtra,Private
+B003,ICICI,Maharashtra,Private
+B004,Axis Bank,Maharashtra,Private
+B005,Bank of Baroda,Gujarat,Public
+B006,PNB,Delhi,Public
+B007,Kotak Mahindra,Maharashtra,Private
+B008,Canara Bank,Karnataka,Public
+B009,Union Bank,Maharashtra,Public
+B010,IDFC FIRST,Tamil Nadu,Private
