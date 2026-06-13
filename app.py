@@ -98,7 +98,7 @@ st.plotly_chart(
 )
 
 
-col1,col2 = st.columns(1)
+col1= st.columns(1)
 
 bank_data = (
     filtered_df
