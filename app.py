@@ -14,3 +14,22 @@ df = load_data()
 st.title("🏦 NPCI Transaction Monitoring Dashboard")
 
 st.markdown("Real-time UPI Transaction Analytics")
+
+st.sidebar.header("Filters")
+
+selected_bank = st.sidebar.multiselect(
+    "Select Bank",
+    options=df["bank_name"].unique(),
+    default=df["bank_name"].unique()
+)
+
+selected_status = st.sidebar.multiselect(
+    "Select Status",
+    options=df["status"].unique(),
+    default=df["status"].unique()
+)
+
+filtered_df = df[
+    (df["bank_name"].isin(selected_bank)) &
+    (df["status"].isin(selected_status))
+]
