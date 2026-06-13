@@ -33,3 +33,42 @@ filtered_df = df[
     (df["bank_name"].isin(selected_bank)) &
     (df["status"].isin(selected_status))
 ]
+
+
+total_txns = len(filtered_df)
+
+total_amount = filtered_df["amount"].sum()
+
+success_rate = round(
+    len(filtered_df[filtered_df["status"]=="Success"])
+    / total_txns * 100,
+    2
+)
+
+failed_rate = round(
+    len(filtered_df[filtered_df["status"]=="Failed"])
+    / total_txns * 100,
+    2
+)
+
+col1,col2,col3,col4 = st.columns(4)
+
+col1.metric(
+    "Total Transactions",
+    f"{total_txns:,}"
+)
+
+col2.metric(
+    "Transaction Amount",
+    f"₹{total_amount:,.0f}"
+)
+
+col3.metric(
+    "Success %",
+    f"{success_rate}%"
+)
+
+col4.metric(
+    "Failed %",
+    f"{failed_rate}%"
+)
