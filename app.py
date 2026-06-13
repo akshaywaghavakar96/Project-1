@@ -136,3 +136,70 @@ col2.plotly_chart(
     fig2,
     use_container_width=True
 )
+
+
+failed_df = filtered_df[
+    filtered_df["status"]=="Failed"
+]
+
+error_data = (
+    failed_df
+    .groupby("error_code")
+    .size()
+    .reset_index(name="count")
+)
+
+fig3 = px.bar(
+    error_data,
+    x="error_code",
+    y="count",
+    title="Failure Reasons"
+)
+
+st.plotly_chart(
+    fig3,
+    use_container_width=True
+)
+
+filtered_df["hour"] = (
+    filtered_df["txn_time"]
+    .str[:2]
+    .astype(int)
+)
+
+hourly = (
+    filtered_df
+    .groupby("hour")
+    .size()
+    .reset_index(name="count")
+)
+
+fig4 = px.line(
+    hourly,
+    x="hour",
+    y="count",
+    title="Hourly Transaction Volume"
+)
+
+st.plotly_chart(
+    fig4,
+    use_container_width=True
+)
+
+
+st.subheader("Transaction Details")
+
+st.dataframe(
+    filtered_df,
+    use_container_width=True
+)
+
+
+csv = filtered_df.to_csv(index=False)
+
+st.download_button(
+    "Download Data",
+    csv,
+    "transactions.csv",
+    "text/csv"
+)
