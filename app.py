@@ -96,3 +96,25 @@ st.plotly_chart(
     fig,
     use_container_width=True
 )
+
+
+col1,col2 = st.columns(2)
+
+bank_data = (
+    filtered_df
+    .groupby("bank_name")
+    .size()
+    .reset_index(name="count")
+)
+
+fig1 = px.bar(
+    bank_data,
+    x="bank_name",
+    y="count",
+    title="Bank-wise Transactions"
+)
+
+col1.plotly_chart(
+    fig1,
+    use_container_width=True
+)
